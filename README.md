@@ -6,7 +6,7 @@
 
 ## 📖 Description
 
-![Home Page Screenshot](website/static/Screenshot%20(12).png)
+![Home Page Screenshot](Screenshot%20(12).png)
 
 This is a simple **quiz website** built with Flask and SQLite.
 
@@ -104,6 +104,7 @@ CREATE TABLE themes (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL
 );
+
 
 
 
