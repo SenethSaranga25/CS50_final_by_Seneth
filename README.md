@@ -2,8 +2,6 @@
 #### Video Demo:  <URL HERE>
 #### Description:
 
-![image of the home page](website\static\Screenshot (12).png)
-
 this is a website that asks **100** questions from the person they have to register and log in to use it mainly giving a name and a password that is it then they will be able to complete the 100 questions 10 by 10 and they each **10** questions have a **theme** assigned to them I felt I was weak in **web development** so I made this project. It is not that good and lacks many features but I was out of time and had to end the project fast.
 
 #### Database:
@@ -13,20 +11,20 @@ the **database** consists of ***14*** tables 10 of them are used in setting the 
 this is the sql ***.schema*** for the tables and all the table names
 
 #### Table Names: 
-+completed  
-+quizn1     
-+quizn2     
-+quizn4     
-+quizn6    
-+quizn8          
-=quizn10    
-+quizn3     
-+quizn5     
-+quizn7    
-+quizn9 
-+marks     
-+users
-+themes
+*completed  
+*quizn1     
+*quizn2     
+*quizn4     
+*quizn6    
+*quizn8          
+*quizn10    
+*quizn3     
+*quizn5     
+*quizn7    
+*quizn9 
+*marks     
+*users
+*themes
 
 all the numberd ***quizn*** files are created to store the quizes
 and ***completed** stores witch user completed witch quiz
@@ -107,6 +105,7 @@ some style code is in the html files but most of it is inside the ***styles.css*
 #### Libraries in Use
 
 this simple website uses ***flask*** and ***sqlite3*** *note that **sqlite3** is build into python
+
 
 
 
