@@ -1,0 +1,15 @@
+{% extends "template.html" %}
+
+{% block main %}
+<h1 class = "counter">{{ number }}</h1>
+	<div class="answers">
+		<h2 style = "margin-bottom: 30px ; color: white; align-self: center; text-align: center;">{{ question }}</h2>
+        <br>
+        <h2 style="color: lime ;">{{ answer }}</h2>
+        <br>
+        <form method = "post">
+            <br>
+            <button class="btn btn-primary w-100" id="1" name="next" value="1" type="submit">Next</button>
+        </form>
+    </div>
+{% endblock %}

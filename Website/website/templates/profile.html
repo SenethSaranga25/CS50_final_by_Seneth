@@ -1,0 +1,40 @@
+{% extends "template.html" %}
+<!-- This is created by AI -->
+{% block main %}
+
+<style>
+    h1, h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+</style>
+
+<div class="profile-container">
+    <h1>{{ session['name'] }}'s Profile</h1>
+
+    {% if quizzes %}
+        <h2>Completed Quizzes</h2>
+        <table style="text-align: center;">
+            <tr>
+                <th>Quiz</th>
+                <th>Marks (out of 10)</th>
+            </tr>
+            {% for quiz in quizzes %}
+            <tr>
+                <td>Quiz [{{ quiz[0] }}]</td>
+                <td>{{ quiz[1] }}/10</td>
+                <form method="post">
+                    <td><button class = "btn btn-primary" syle = "" type = "submit" value = "{{quiz[0]}}" name = "quiz" id = "quiz">PLAY</button></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <div class="total">
+            Total Marks from All Quizzes: {{ total_marks }}
+        </div>
+    {% else %}
+        <p>You haven’t completed any quizzes yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "template.html" %}
+{% block title %}
+    Marks
+{% endblock %}
+
+{% block main %}
+<div id="marks">
+    <h1>Your Marks are: {{ mark }}/10</h1>
+    <br>
+    <p style ="font-size: 30px;">Good job</p>
+    <br>
+    {% if  not session.get('play_again_id') or session.get('play_again_id') == 0  %}
+    <a href = "/quiz/answers" style="text-align: center; align-self: center;">Wanna see the answers</a>
+    {% else %}
+    <a href = "/profile/play/answers" style="text-align: center; align-self: center;">Wanna see the answers</a>
+    {% endif %}
+    <br>
+    {% if session.get('level') and session.get('play_again_id') == 0 %}
+        {% if session.get('level') >= 10 %}
+            <a href = "/" style = "margin: 10px ;"><button class="btn btn-primary">You Have Done It All</button></a>
+        {% else %}
+            <a href = "/quiz" style = "margin: 10px ;"><button class="btn btn-primary">Lets do more</button></a>
+        {% endif %}
+    {% else %}
+        <a href = "/quiz" style = "margin: 10px ;"><button class="btn btn-primary">Lets do more</button></a>
+    {% endif %}
+</div>
+{% endblock %}

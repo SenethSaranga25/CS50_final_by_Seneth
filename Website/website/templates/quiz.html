@@ -1,0 +1,25 @@
+{% extends "template.html" %}
+
+{% block main %}
+<h1 class = "counter">{{ number }}</h1>
+<div class="quiz-container">
+	<h1 style="margin-bottom: 40px; text-align: center; align-items: center; color: turquoise;">{{ theme }}</h1>
+	<div class="quiz-header">
+		<br>
+		<h2 style = "margin-bottom: 30px ; text-align: center;">{{question}}</h2>
+	</div>
+
+    <div class="answers">
+		<form class = "answers" method="post">
+			<button class="btn btn-primary w-100" id="1" name="answer" value="1" type="submit">{{Answer1}}</button>
+			<button class="btn btn-primary w-100" id="2" name="answer" value="2" type="submit">{{Answer2}}</button>
+			<button class="btn btn-primary w-100" id="3" name="answer" value="3" type="submit">{{Answer3}}</button>
+			<button class="btn btn-primary w-100" id="4" name="answer" value="4" type="submit">{{Answer4}}</button>
+			<button class="btn btn-primary w-100" id="5" name="answer" value="5" type="submit">{{Answer5}}</button>
+		</form>
+    </div>
+</div>
+<script>
+
+</script>
+{% endblock %}

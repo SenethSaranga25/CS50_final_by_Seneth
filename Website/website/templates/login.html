@@ -1,0 +1,23 @@
+{% extends "template.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <div class = "main">
+        <div class = "login">
+            <h2>LOG IN</h2>
+            <form class = "form" method="post">
+                <div class="mb-3">
+                    <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text" id="username">
+                </div>
+                <div class="mb-3">
+                    <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password" id="password">
+                </div>
+                <button class="btn btn-primary" type="submit">Log In</button>
+                <p class = "msg">{{message}}</p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

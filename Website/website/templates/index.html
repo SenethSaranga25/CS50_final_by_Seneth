@@ -1,0 +1,24 @@
+{% extends "template.html" %}
+
+{% block main %}
+	<div class = "main">
+		<div class = "content">
+			<h1><b>Welcome To</b></h1>
+			<img class = "img" src="{{ url_for('static', filename='quizzy_white.png') }}" alt="quizzy" width="300" height="auto">
+			<br>
+			{% if not session.get('name') %}
+			<a href = "/login"><button type="button" class="btn btn-primary btn-lg">Let's Start</button></a>
+			{% else %}
+				{% if session.get('level') %}
+					{% if not session.get('level') > 9 %}
+						<a href = "/quiz"><button type="button" class="btn btn-primary btn-lg">Let's Start</button></a>
+					{% else %}
+						<a href = "/done"><button type="button" class="btn btn-primary btn-lg">Let's Start</button></a>
+					{% endif %}
+				{% else %}
+					<a href = "/quiz"><button type="button" class="btn btn-primary btn-lg">Let's Start</button></a>
+				{% endif %}
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}
