@@ -1,110 +1,113 @@
-# YOUR PROJECT TITLE
-#### Video Demo:  <URL HERE>
-#### Description:
+# Quiz Website
 
-this is a website that asks **100** questions from the person they have to register and log in to use it mainly giving a name and a password that is it then they will be able to complete the 100 questions 10 by 10 and they each **10** questions have a **theme** assigned to them I felt I was weak in **web development** so I made this project. It is not that good and lacks many features but I was out of time and had to end the project fast.
+#### Video Demo: <URL HERE>
 
-#### Database:
+---
 
-the **database** consists of ***14*** tables 10 of them are used in setting the ***questions*** and the others are used in keeping track of **players ,player scores** and **themes** of each quiz
+## 📖 Description
 
-this is the sql ***.schema*** for the tables and all the table names
+![Home Page Screenshot](website/static/Screenshot%20(12).png)
 
-#### Table Names: 
-*completed  
-*quizn1     
-*quizn2     
-*quizn4     
-*quizn6    
-*quizn8          
-*quizn10    
-*quizn3     
-*quizn5     
-*quizn7    
-*quizn9 
-*marks     
-*users
-*themes
+This is a simple **quiz website** built with Flask and SQLite.
 
-all the numberd ***quizn*** files are created to store the quizes
-and ***completed** stores witch user completed witch quiz
-also ***users*** stores the user data and gives them a id and stores their name and password
-    ***marks*** stores the marks each user has in each quiz
-    ***themes*** as the name suggests it stores the themes of the quizes
+- The site asks users **100 questions**.
+- Users must **register and log in** (only a username and password are required).
+- Questions are divided into **10 sets of 10**, each with its own **theme**.
+- After completing a set, progress is stored in the database.
 
-these are __.schema__ of the database
+I built this project to strengthen my **web development** skills. It’s not feature-complete (I ran out of time), but it demonstrates authentication, session handling, and database integration.
 
-CREATE TABLE **users** (/
-    id INTEGER PRIMARY KEY AUTOINCREMENT,/
-    username TEXT NOT NULL,/
-    password TEXT NOT NULL/
-, level INTEGER DEFAULT 0);/
+---
 
-CREATE TABLE **sqlite_sequence**(name,seq); /
+## 🗂️ Table Names
 
-CREATE TABLE IF NOT EXISTS **quizn** ( /   
-    id INTEGER PRIMARY KEY AUTOINCREMENT,/
-    question TEXT NOT NULL,/
-    answer1 TEXT NOT NULL,/
-    answer2 TEXT NOT NULL,/
-    answer3 TEXT NOT NULL,/
-    answer4 TEXT NOT NULL,/
-    answer5 TEXT NOT NULL,/
-    correct_answer INTEGER NOT NULL /    
-);/
+There are **14 tables** in total:
 
-CREATE TABLE **marks** (/
-    id INTEGER PRIMARY KEY AUTOINCREMENT,/
-    user_id INTEGER NOT NULL,/
-    quiz_name TEXT NOT NULL,/
-    marks INTEGER NOT NULL,/
-    FOREIGN KEY (user_id) REFERENCES users (id)/     
-);/
-CREATE TABLE **completed** (/
-    id INTEGER PRIMARY KEY AUTOINCREMENT,/
-    user_id INTEGER NOT NULL,/
-    quiz_id INTEGER NOT NULL,/
-    completed INTEGER DEFAULT 0,/
-    FOREIGN KEY (user_id) REFERENCES users (id),/      
-    UNIQUE(user_id, quiz_id)/
-);/
-CREATE TABLE **quizn3** (/
-    id INTEGER PRIMARY KEY AUTOINCREMENT,/
-    question TEXT NOT NULL,/
-    answer1 TEXT NOT NULL,/
-    answer2 TEXT NOT NULL,/
-    answer3 TEXT NOT NULL,/
-    answer4 TEXT NOT NULL,/
-    answer5 TEXT NOT NULL,/
-    correct_answer INTEGER NOT NULL,/
-    theme_id INTEGER,/
-    FOREIGN KEY (theme_id) REFERENCES themes (id)/    
-);/
-CREATE TABLE **themes** (/
-    id INTEGER PRIMARY KEY AUTOINCREMENT,/
-    name TEXT NOT NULL/
-);/
+- `users`
+- `marks`
+- `completed`
+- `themes`
+- `quizn1`
+- `quizn2`
+- `quizn3`
+- `quizn4`
+- `quizn5`
+- `quizn6`
+- `quizn7`
+- `quizn8`
+- `quizn9`
+- `quizn10`
 
-#### CODE
+> The `quizn*` tables store questions; the others track users, scores, completion status, and themes.
 
-The ***main.py*** file is the file that we need to run to get the website
-AND it uses website file as a python package
+---
 
-The **__init__.py** is the file that combines all the files in the package namely **views.py** and **auth.py**
+## 📂 Table Schemas
 
-The **auth.py** file takes care of the autharization of any user and its the file with the login, logout and register functions
+```sql
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL,
+    level INTEGER DEFAULT 0
+);
 
-Then **views.py** is the file that takes care of the main functionality of the website it takes care of everythin other than login,logout and register functions in the ***website***
+CREATE TABLE sqlite_sequence (
+    name,
+    seq
+);
 
-At Last the ***database.py*** takes care of the database functionality needed for the website
+-- Base schema used for quiz tables (quizn1 ... quizn10)
+CREATE TABLE IF NOT EXISTS quizn (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    question TEXT NOT NULL,
+    answer1 TEXT NOT NULL,
+    answer2 TEXT NOT NULL,
+    answer3 TEXT NOT NULL,
+    answer4 TEXT NOT NULL,
+    answer5 TEXT NOT NULL,
+    correct_answer INTEGER NOT NULL
+);
 
-#### Style
+CREATE TABLE marks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    quiz_name TEXT NOT NULL,
+    marks INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users (id)
+);
 
-some style code is in the html files but most of it is inside the ***styles.css***
+CREATE TABLE completed (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    quiz_id INTEGER NOT NULL,
+    completed INTEGER DEFAULT 0,
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    UNIQUE(user_id, quiz_id)
+);
 
-#### Libraries in Use
+-- Example of a quiz table extended with a theme reference
+CREATE TABLE quizn3 (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    question TEXT NOT NULL,
+    answer1 TEXT NOT NULL,
+    answer2 TEXT NOT NULL,
+    answer3 TEXT NOT NULL,
+    answer4 TEXT NOT NULL,
+    answer5 TEXT NOT NULL,
+    correct_answer INTEGER NOT NULL,
+    theme_id INTEGER,
+    FOREIGN KEY (theme_id) REFERENCES themes (id)
+);
 
-this simple website uses ***flask*** and ***sqlite3*** *note that **sqlite3** is build into python
+CREATE TABLE themes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
+);
+
+
+
+
 
 
 
