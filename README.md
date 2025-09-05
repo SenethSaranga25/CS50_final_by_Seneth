@@ -34,56 +34,56 @@ also ***users*** stores the user data and gives them a id and stores their name 
 
 these are __.schema__ of the database
 
-CREATE TABLE **users** (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT NOT NULL,
-    password TEXT NOT NULL
-, level INTEGER DEFAULT 0);
+CREATE TABLE **users** (/
+    id INTEGER PRIMARY KEY AUTOINCREMENT,/
+    username TEXT NOT NULL,/
+    password TEXT NOT NULL/
+, level INTEGER DEFAULT 0);/
 
-CREATE TABLE **sqlite_sequence**(name,seq);  
+CREATE TABLE **sqlite_sequence**(name,seq); /
 
-CREATE TABLE IF NOT EXISTS **quizn** (    
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    question TEXT NOT NULL,
-    answer1 TEXT NOT NULL,
-    answer2 TEXT NOT NULL,
-    answer3 TEXT NOT NULL,
-    answer4 TEXT NOT NULL,
-    answer5 TEXT NOT NULL,
-    correct_answer INTEGER NOT NULL      
-);
+CREATE TABLE IF NOT EXISTS **quizn** ( /   
+    id INTEGER PRIMARY KEY AUTOINCREMENT,/
+    question TEXT NOT NULL,/
+    answer1 TEXT NOT NULL,/
+    answer2 TEXT NOT NULL,/
+    answer3 TEXT NOT NULL,/
+    answer4 TEXT NOT NULL,/
+    answer5 TEXT NOT NULL,/
+    correct_answer INTEGER NOT NULL /    
+);/
 
-CREATE TABLE **marks** (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER NOT NULL,
-    quiz_name TEXT NOT NULL,
-    marks INTEGER NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users (id)       
-);
-CREATE TABLE **completed** (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER NOT NULL,
-    quiz_id INTEGER NOT NULL,
-    completed INTEGER DEFAULT 0,
-    FOREIGN KEY (user_id) REFERENCES users (id),      
-    UNIQUE(user_id, quiz_id)
-);
-CREATE TABLE **quizn3** (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    question TEXT NOT NULL,
-    answer1 TEXT NOT NULL,
-    answer2 TEXT NOT NULL,
-    answer3 TEXT NOT NULL,
-    answer4 TEXT NOT NULL,
-    answer5 TEXT NOT NULL,
-    correct_answer INTEGER NOT NULL,
-    theme_id INTEGER,
-    FOREIGN KEY (theme_id) REFERENCES themes (id)     
-);
-CREATE TABLE **themes** (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL
-);
+CREATE TABLE **marks** (/
+    id INTEGER PRIMARY KEY AUTOINCREMENT,/
+    user_id INTEGER NOT NULL,/
+    quiz_name TEXT NOT NULL,/
+    marks INTEGER NOT NULL,/
+    FOREIGN KEY (user_id) REFERENCES users (id)/     
+);/
+CREATE TABLE **completed** (/
+    id INTEGER PRIMARY KEY AUTOINCREMENT,/
+    user_id INTEGER NOT NULL,/
+    quiz_id INTEGER NOT NULL,/
+    completed INTEGER DEFAULT 0,/
+    FOREIGN KEY (user_id) REFERENCES users (id),/      
+    UNIQUE(user_id, quiz_id)/
+);/
+CREATE TABLE **quizn3** (/
+    id INTEGER PRIMARY KEY AUTOINCREMENT,/
+    question TEXT NOT NULL,/
+    answer1 TEXT NOT NULL,/
+    answer2 TEXT NOT NULL,/
+    answer3 TEXT NOT NULL,/
+    answer4 TEXT NOT NULL,/
+    answer5 TEXT NOT NULL,/
+    correct_answer INTEGER NOT NULL,/
+    theme_id INTEGER,/
+    FOREIGN KEY (theme_id) REFERENCES themes (id)/    
+);/
+CREATE TABLE **themes** (/
+    id INTEGER PRIMARY KEY AUTOINCREMENT,/
+    name TEXT NOT NULL/
+);/
 
 #### CODE
 
@@ -105,6 +105,7 @@ some style code is in the html files but most of it is inside the ***styles.css*
 #### Libraries in Use
 
 this simple website uses ***flask*** and ***sqlite3*** *note that **sqlite3** is build into python
+
 
 
 
