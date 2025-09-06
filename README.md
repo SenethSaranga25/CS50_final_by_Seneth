@@ -1,6 +1,6 @@
 # Quiz Website
 
-#### Video Demo: <[URL HERE](https://youtu.be/Zvfc4p6ui0E))>
+#### Video Demo: <[URL HERE](https://youtu.be/Zvfc4p6ui0E)>
 
 ---
 
@@ -104,6 +104,7 @@ CREATE TABLE themes (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL
 );
+
 
 
 
