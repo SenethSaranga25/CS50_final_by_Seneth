@@ -6,7 +6,7 @@
 
 ## Description  
 
-![Home Page Screenshot](website/static/Screenshot%20(12).png)  
+![Home Page Screenshot](Screenshot%20(12).png)  
 
 This is a **quiz website** built with **Flask** and **SQLite**.  
 It demonstrates:  
@@ -142,3 +142,4 @@ CREATE TABLE quizn1 (
 6. Replay a quiz they already completed.
 
 ***And Answers page lets them review correct solutions.***
+
