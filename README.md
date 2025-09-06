@@ -1,48 +1,83 @@
-# Quiz Website
+# Quizzey  
 
-#### Video Demo: <[URL HERE](https://youtu.be/Zvfc4p6ui0E)>
+#### Video Demo: <[URL HERE](https://youtu.be/Zvfc4p6ui0E)>  
 
----
+---  
 
-## 📖 Description
+## Description  
 
-![Home Page Screenshot](Screenshot%20(12).png)
+![Home Page Screenshot](website/static/Screenshot%20(12).png)  
 
-This is a simple **quiz website** built with Flask and SQLite.
+This is a **quiz website** built with **Flask** and **SQLite**.  
+It demonstrates:  
 
-- The site asks users **100 questions**.
-- Users must **register and log in** (only a username and password are required).
-- Questions are divided into **10 sets of 10**, each with its own **theme**.
-- After completing a set, progress is stored in the database.
+-  User **registration** & **login** (only username & password required)  
+-  **Authentication & session handling** using Flask sessions  
+-  **Database integration** with SQLite (14 tables)  
+-  A quiz flow where users answer **100 questions** split into **10 themed sets**  
+-  Marks storage, progress tracking, and replaying completed quizzes  
 
-I built this project to strengthen my **web development** skills. It’s not feature-complete (I ran out of time), but it demonstrates authentication, session handling, and database integration.
+I built this project to strengthen my **web development** and **database** skills.  
+It’s not fully polished, but it showcases:  
 
----
+- Flask Blueprints for modular routes (`views.py` for quiz logic, `auth.py` for login/register/logout)  
+- Secure(ish) login and session handling  
+- Dynamic question rendering and result saving  
+- Replay functionality for completed quizzes  
 
-## 🗂️ Table Names
+---  
 
-There are **14 tables** in total:
+## Features  
 
-- `users`
-- `marks`
-- `completed`
-- `themes`
-- `quizn1`
-- `quizn2`
-- `quizn3`
-- `quizn4`
-- `quizn5`
-- `quizn6`
-- `quizn7`
-- `quizn8`
-- `quizn9`
-- `quizn10`
+- **User Authentication**  
+  - Register with a username + password  
+  - Login & logout functionality  
+  - Session handling to track current user  
 
-> The `quizn*` tables store questions; the others track users, scores, completion status, and themes.
+- **Quiz System**  
+  - 100 questions total  
+  - 10 sets of 10 questions (each tied to a *theme*)  
+  - Multiple-choice (5 options, one correct)  
+  - Instant score tracking  
+  - Automatic marks saving & quiz completion logging  
 
----
+- **Profile Page**  
+  - View completed quizzes  
+  - See marks and progress (e.g., `25/40`)  
+  - Replay any completed quiz set  
 
-## 📂 Table Schemas
+- **Answers Page**  
+  - Review correct answers after finishing a quiz  
+
+---  
+
+## Project Structure  
+
+quiz-website/
+│── main.py # Entry point (runs the app)
+│── website/
+│ ├── init.py # App factory, Blueprint registration
+│ ├── views.py # Quiz routes
+│ ├── auth.py # Authentication routes
+│ ├── database.py # DB connection & helper functions
+│ ├── static/ # CSS, JS, Images
+│ └── templates/ # HTML templates (Jinja2)
+│── README.md # Project documentation
+
+
+---  
+
+## Database Design  
+
+There are **14 tables** in total:  
+
+- `users` → Stores usernames, passwords, level progress  
+- `marks` → Stores marks per quiz attempt  
+- `completed` → Tracks completed quiz sets  
+- `themes` → Stores quiz themes (10 total)  
+- `quizn1` … `quizn10` → Each stores 10 questions for that set  
+
+### Example Schemas  
 
 ```sql
 CREATE TABLE users (
@@ -50,23 +85,6 @@ CREATE TABLE users (
     username TEXT NOT NULL,
     password TEXT NOT NULL,
     level INTEGER DEFAULT 0
-);
-
-CREATE TABLE sqlite_sequence (
-    name,
-    seq
-);
-
--- Base schema used for quiz tables (quizn1 ... quizn10)
-CREATE TABLE IF NOT EXISTS quizn (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    question TEXT NOT NULL,
-    answer1 TEXT NOT NULL,
-    answer2 TEXT NOT NULL,
-    answer3 TEXT NOT NULL,
-    answer4 TEXT NOT NULL,
-    answer5 TEXT NOT NULL,
-    correct_answer INTEGER NOT NULL
 );
 
 CREATE TABLE marks (
@@ -86,8 +104,13 @@ CREATE TABLE completed (
     UNIQUE(user_id, quiz_id)
 );
 
--- Example of a quiz table extended with a theme reference
-CREATE TABLE quizn3 (
+CREATE TABLE themes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
+);
+
+-- Base schema for quizzes (quizn1 ... quizn10)
+CREATE TABLE quizn1 (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     question TEXT NOT NULL,
     answer1 TEXT NOT NULL,
@@ -99,22 +122,23 @@ CREATE TABLE quizn3 (
     theme_id INTEGER,
     FOREIGN KEY (theme_id) REFERENCES themes (id)
 );
+```
 
-CREATE TABLE themes (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL
-);
+### How It Works
 
+1. A user registers or logs in.
 
+2. They are shown a quiz set of 10 questions.
 
+3. After answering:
+   Their score is calculated.
 
+4. The quiz is marked completed.
+   Results are stored in marks.
 
+5. On the Profile page:
+   Users can see their progress.
 
+6. Replay a quiz they already completed.
 
-
-
-
-
-
-
-
+***And Answers page lets them review correct solutions.***
